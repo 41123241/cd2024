@@ -1,0 +1,526 @@
+POLITECNICO DI TORINO
+
+                                                     都靈理工大學
+
+
+
+
+
+ANALYSIS OF THE ODOO SOFTWARE CAPABILITIES REGARDING PRODUCT LIFECYCLE MANAGEMENT, MANUFACTURING EXECUTION SYSTEMS AND THEIR INTEGRATION
+
+對於Odoo軟件在產品生命週期管理（PLM）、製造執行系統（MES）以及它們的整合方面的能力進行分析。
+
+
+
+
+
+
+SUPERVISORS	CANDIDATE
+Giulia Bruno	Lucas Flabiano Perotti
+Franco Lombardi
+
+
+監督候選人
+朱莉亞·布魯諾      
+盧卡斯·弗拉比亞諾·佩羅蒂   
+盧卡斯·弗拉比亞諾·佩羅蒂
+
+Academic Year 2020 – 2021
+
+2020年至2021年學年 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+This work is subject to the Creative Commons Licence
+   這份工作受到創用 CC 授權條款的約束。
+
+All Rights Reserved
+保留所有權利。
+ 
+ACKNOWLEDGMENTS
+鳴謝
+
+I would like to thank Dr. Giulia Bruno for her expert advice and invitation to develop this project, as well as Emiliano Traini, for his extraordinary support in this thesis process.
+
+My most sincere gratitude to my parents, Julio and Michelle, who gave me everything, from my life to their extensive and unconditional support and encouragement; also, to my brothers and my fiancée Ana, who inspired me through all these years.
+
+My deepest thanks and appreciation to Icaro, Matt, and Maz, for their endless help and support throughout not just this project, but for all the other moments in which they pushed me to be better. Also, for those who have touched my life, being my greatest gifts, you all know who you are, and I am truly grateful for sharing special moments of my life with you.
+
+
+我想感謝朱莉亞·布魯諾博士對這個項目的專業建議和邀請，以及 Emiliano Traini 在這個論文過程中給予的非凡支持。
+
+最誠摯地感謝我的父母 Julio 和 Michelle，他們給了我一切，從我的生命到他們廣泛而無條件的支持和鼓勵；同樣地，也感謝我的兄弟和我的未婚妻 Ana，在這些年裡一直激勵著我。
+
+我最深切的感謝和欣賞送給 Icaro、Matt 和 Maz，感謝他們在這個項目中以及其他時刻給予我的無盡幫助和支持，他們一直推動著我不斷進步。同樣地，對於那些影響了我的生命，成為我最大禮物的人，你們都知道自己是誰，我真心感謝與你們分享我生命中特別時刻。 
+ABSTRACT
+                                                     摘要
+ANALYSIS OF THE ODOO SOFTWARE CAPABILITIES REGARDING PRODUCT LIFECYCLE MANAGEMENT, MANUFACTURING EXECUTION SYSTEMS AND THEIR INTEGRATION
+對於 Odoo 軟體在產品生命週期管理（PLM）、製造執行系統（MES）及其整合方面的能力進行分析
+
+The second half of the 20th century had been marked for the advancements of computer technology in all aspects of production.
+二十世紀下半葉以電腦技術在生產的各個方面的進步為特徵。
+
+The key feature of that statement is the undeniable truth that alongside the increased complexity allowed by computing power comes an ever increasing production of overwhelming amounts of information.
+該說法的關鍵特徵在於無可否認的事實，即隨著計算能力所允許的增加的複雜性，將不斷產生龐大的信息量。
+從工業景觀的不同角度來看，由於對組織、自動化和減少浪費的迫切需求，一些系統應運而生，這些系統專注於有用數據的這一領域。
+
+From separate perspectives of the industrial landscape, several systems were brewed by that sheer necessity for organization, automation and waste reduction focusing on that pool of useful data.
+從工業景觀的不同角度來看，由於對組織、自動化和減少浪費的迫切需求，一些系統應運而生，這些系統專注於有用數據的這一領域。
+
+ERP (from a managerial perspective), MES (from a production perspective) and more recently PLM (from a strategic development/redevelopment perspective) emerged as information solutions tackling this problem from different angles. These solutions, however effective, are always plagued by the fundamental incompatibility between the tools that implement those systems.
+從管理的角度來看，ERP（企業資源計劃）、從生產的角度來看，MES（製造執行系統），以及最近從戰略發展/再開發的角度來看，PLM（產品生命週期管理）等信息解決方案從不同角度解決了這一問題。然而，這些解決方案，儘管有效，卻總是受到實施這些系統的工具之間根本不相容的困擾。
+
+
+This paper objectives revolve around analyzing the integration PLM and MES systems from a theoretical perspective and comment on the use of the Odoo software tool to implement said integration.
+本文的目標圍繞著從理論角度分析 PLM 和 MES 系統的整合，並評論使用 Odoo 軟體工具來實現該整合。
+
+The Odoo software was described in detail (regarding its use for manufacturing envirorment) icluding how it implements PLM and MES. Then, the software was subjected to the simulation of a fictional firm devised in the molds of Industry 4.0. This company was a fictional recently founded small case manufacturing company that uses plastic injection molding as their primary mean of production and uses additive manufacturing and fast prototyping as part of their business strategy.
+對 Odoo 軟體進行了詳細描述（關於其在製造環境中的使用），包括它如何實現 PLM 和 MES。然後，對該軟體進行了一個虛構公司的模擬，這家公司是一家虛構的最近成立的小型製造公司，其主要生產手段是塑料射出成型，並將增材製造和快速原型製作作為其業務策略的一部分。
+
+
+Keywords: Product Life-Cycle Management, Product Life-Cycle Management, Odoo
+
+關鍵詞：產品生命周期管理、製造執行系統、Odoo
+ 
+TABLE OF CONTENTS
+
+                                                                               目錄 
+ACKNOWLEDGMENTS	II
+ABSTRACT	III
+TABLE OF CONTENTS	IV
+LIST OF ACRONYMS	VI
+INTRODUCTION	1
+1.1.	OBJECTIVE	1
+1.2.	STRUCTURE	2
+THEORETICAL BACKGROUND	3
+2.1.	PRODUCT LIFECYCLE MANAGEMENT	3
+2.2.	ENTERPRISE RESOURCE PLANING	6
+2.3.	MANUFACTURING EXECUTION SYSTEM	9
+2.4.	INDUSTRY 4.0	10
+THE STATE OF THE ART AND THE INTEGRATION OF PLM AND MES	14
+3.1.	HOW WOULD THIS INTEGRATION LOOK LIKE IN PRACTICAL TERMS	16
+INTRODUCTION TO THE COMPANY AND PRODUCT	18
+4.1.	THE PRODUCTS AND PROCESSES	19
+4.1.1.	Part A	22
+4.1.2.	Parts B and C	23
+4.1.3.	Molds	24
+4.2.	WHAT IS ANALIZED DURING THE SIMULATION	24
+THE ODOO SOFTWARE	26
+5.1.	INTRODUCTION TO THE ODOO SOFTWARE	26
+5.1.1.	How it works	26
+5.1.2.	Odoo’s view on manufacturing	29
+5.1.3.	The information structure of Odoo	31
+5.2.	STARTING THE SIMULATION	38
+5.2.1.	Software option chosen for the simulation	38
+5.2.2.	Setings details that are relevant	39
+5.3.	BUILDING THE COMPANY STRUCTURE	39
+5.3.1.	Users	39
+5.3.2.	Workcenters and Equipement	41
+5.4.	DEVELOPMENT	44
+5.4.1.	Idea - design - product prototype	45
+5.4.2.	Process Plan - Production Test Run - Production	55
+5.4.3.	Process upgrade procedure	61
+ODOOS ACOMPLISHMENTS REGARDING PLM AND MES	69
+6.1.	HOW DOES THE SOFTWARE DEALS WITH ITEMS?	69
+6.1.1.	Are all aspects of the product lifecycle represented?	69
+6.1.2.	How well are each of those items represented?	70
+6.2.	HOW EASY IT IS TO CREATE A BRAND-NEW PRODUCT?	70
+6.2.1.	How is the product depicted?	70
+6.2.2.	How does the product integrate and reference relevant files?	70
+6.2.3.	Does changing one affects the other?	70
+6.3.	HOW EASY IT IS TO CREATE A BRAND-NEW PRODUCTION PROCESS?	71
+6.3.1.	How the process is depicted?	71
+6.3.2.	How does the process integrate and reference the product it produces?	71
+6.3.3.	Does changing one affects the other?	71
+6.4.	HOW EASY IS TO IMPROVE AN EXISTING PRODUCT/ PRODUCTION PROCESS?	71
+6.4.1.	How easy it is to update its metadata	71
+6.4.2.	How easy it is to determine the effects of the change?	72
+6.4.3.	How does the software deals with different product revisions?	72
+6.5.	HOW EASY IS TO FIND DATA RELATED TO PRODUCT OR PROCESS?	72
+6.5.1.	How easy is find production numbers?	73
+6.5.2.	How does Odoo generate performance data?	74
+6.5.3.	How does the software present performance change as a result of a upgrade?	74
+CONCLUSION	75
+BIBLIOGRAPHY	77
+
+
+致謝 II
+摘要 III
+目錄 IV
+縮寫列表 VI
+引言 1
+1.1. 目標 1
+1.2. 結構 2
+理論背景 3
+2.1. 產品生命週期管理 3
+2.2. 企業資源規劃 6
+2.3. 製造執行系統 9
+2.4. 工業 4.0 10
+PLM 和 MES 的最新技術狀態和整合 14
+3.1. 實際情況下這種整合會是什麼樣子 16
+公司和產品簡介 18
+4.1. 產品和流程 19
+4.1.1. A部分 22
+4.1.2. B和C部分 23
+4.1.3. 模具 24
+4.2. 模擬期間分析了什麼 24
+Odoo 軟體 26
+5.1. Odoo 軟體簡介 26
+5.1.1. 如何運作 26
+5.1.2. Odoo 對製造的觀點 29
+5.1.3. Odoo 的信息結構 31
+5.2. 開始模擬 38
+5.2.1. 模擬選擇的軟體選項 38
+5.2.2. 相關的設置細節 39
+5.3. 建立公司結構 39
+5.3.1. 用戶 39
+5.3.2. 工作中心和設備 41
+5.4. 開發 44
+5.4.1. 想法 - 設計 - 產品原型 45
+5.4.2. 流程計劃 - 生產測試運行 - 生產 55
+5.4.3. 流程升級程序 61
+Odoo 在 PLM 和 MES 方面的成就 69
+6.1. 該軟體如何處理項目？ 69
+6.1.1. 產品生命周期的所有方面是否都有所呈現？ 69
+6.1.2. 這些項目的呈現程度如何？ 70
+6.2. 創建全新產品有多容易？ 70
+6.2.1. 產品是如何描述的？ 70
+6.2.2. 產品如何整合和參考相關文件？ 70
+6.2.3. 改變一個是否會影響另一個？ 70
+6.3. 創建全新生產流程有多容易？ 71
+6.3.1. 流程是如何描述的？ 71
+6.3.2. 流程如何整合和參考其所生產的產品？ 71
+6.3.3. 改變一個是否會影響另一個？ 71
+6.4. 改善現有產品/生產流程有多容易？ 71
+6.4.1. 更新其元數據有多容易 71
+6.4.2. 確定變更的影響有多容易？ 72
+6.4.3. 該軟體如何處理不同的產品版本？ 72
+6.5. 查找與產品或流程相關的數據有多容易？ 72
+6.5.1. 查找生產數據有多容易？ 73
+6.5.2. Odoo 如何生成性能數據？ 74
+6.5.3. 該軟體如何呈現升級的性能變化？ 74
+結論 75
+參考文獻 77
+ 
+LIST OF ACRONYMS
+
+ 縮寫列表
+
+ERP	Enterprise Resource Planning
+MES	Manufacturing Execution System
+PLM	Product Lifecycle Management
+MRP	Material resource planning
+WO	Work Order
+BOM	Bill of Materials
+MO	Manufacturing Order
+ECO	Engineering Change Order
+CPS	Cyber Physical System
+IoT	Internet of things
+DT	Digital Twin
+GUI	Graphical User Interface
+CNC	Computer Numerical Control
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ERP - 企業資源規劃（Enterprise Resource Planning）
+MES - 製造執行系統（Manufacturing Execution System）
+PLM - 產品生命周期管理（Product Lifecycle Management）
+MRP - 物料資源規劃（Material Resource Planning）
+WO - 工作訂單（Work Order）
+BOM - 物料清單（Bill of Materials）
+MO - 製造訂單（Manufacturing Order）
+ECO - 工程變更訂單（Engineering Change Order）
+CPS - 智慧物理系統（Cyber Physical System）
+IoT - 物聯網（Internet of Things）
+DT - 數位孿生（Digital Twin）
+GUI - 圖形使用者介面（Graphical User Interface）
+CNC - 電腦數值控制（Computer Numerical Control）
+
+
+
+
+
+
+
+
+
+ 
+LIST OF FIGURES
+圖表一覽表
+
+FIGURE 1 VISUAL REPRESENTATION OF THE SCOPE OF DIFFERENT INFORMATION SYSTEMS	7                                                                                                     圖 1 不同資訊系統範圍的視覺化表示 7
+FIGURE 2 VISUAL COMPARISON OF ERP AND PLM CONCERNING GRANULARITY	8
+圖 2 ERP 和 PLM 在粒度方面的視覺比較 8
+FIGURE 3 VISUAL REPRESENTATION OF THE ROLL OF DIFFERENT SYSTEMS INCLUDING MES	9
+圖 3 包括 MES 在內的不同系統角色的視覺表示 9
+FIGURE 4 THE INDUSTRY EVOLUTION	10
+圖 4 行業演進 10
+FIGURE 5 EXAMPLE PROJECT OF POWER SUPPLY ADAPTOR CIRCUIT	13
+圖 5 電源適配器電路的示例專案 13
+FIGURE 6 DIAGRAM OF PLM INTEGRATION	14
+圖 6 PLM 整合的圖示 14
+FIGURE 7 DIAGRAM OF WEB SERVICE ARCHITECTURE	15
+圖 7 Web 服務架構圖 15
+FIGURE 8 DEVELOPMENT DIAGRAM	19
+圖 8 開發流程圖 19
+FIGURE 9 EXAMPLE OF STAMPED AK74 PATTERN RIFLE RECEIVER	20
+   圖 9 AK74 樣式步槍機匣的示例 20
+FIGURE 10 EXAMPLE OF MILLED AK74 PATTERN RIFLE RECEIVER	20
+圖 10 AK74 樣式步槍機匣的示例 20
+FIGURE 11 EXAMPLE OF INJECTION MOLD MADE USING A 3D PRINTER	21
+圖 11 使用 3D 打印機製作的注塑模具的示例 21
+FIGURE 12 3D EXPLODED VIEW OF THE THEORETICAL PRODUCT	22
+圖 12 理論產品的三維爆炸視圖 22
+FIGURE 13 ISOMETRIC VIEW OF PART A	23
+圖 13 零件 A 的等距視圖 23
+FIGURE 14 PARTS B AND C	24
+圖 14 零件 B 和 C 24
+FIGURE 15 FUNCTION DIAGRAM OF ODOO CONFIGURATION A	27
+圖 15 ODOO 配置 A 的功能圖 27
+FIGURE 16 FUNCTION DIAGRAM OF ODOO CONFIGURATION B	28
+圖 16 ODOO 配置 B 的功能圖 28
+FIGURE 17 SCREENSHOT OF GUI FROM ODOO IN CONFIGURATION B	29
+圖 17 ODOO 介面的截圖（配置 B） 29
+FIGURE 18 EXAMPLE OF ODOO’S INTERFACE REGARDING ITEMS	31
+圖 18 關於項目的 ODOO 介面示例 31
+FIGURE 19 EXAMPLE OF SPECIFIC ITEM AND ITS METADATA AS DISPLAYED BY GUI	32
+圖 19 特定項目及其元數據的 GUI 示意圖 32
+FIGURE 20 SIMPLIFIED ITEM RELATION DIAGRAM TO THE MANUFACTURING OF A PRODUCT X	33
+圖 20 到產品 X 製造的簡化項目關係圖 33
+FIGURE 21 SIMPLIFIED PRODUCT RELATION DIAGRAM	34
+圖 21 簡化的產品關係圖 34
+FIGURE 22 SIMPLIFIED OPERATION DIAGRAM	34
+圖 22 簡化的操作圖 34
+
+FIGURE 23 SIMPLIFIED BOM DIAGRAM	35
+圖 23 簡化的 BOM 圖 35
+FIGURE 24 SIMPLIFIED ORDERS DIAGRAM	36
+圖 24 簡化的訂單圖 36
+FIGURE 25 OPERATOR INTERFACE DURING THE WO	36
+圖 25 WO 期間的操作員界面 36
+FIGURE 26 SIMPLIFIED ECO FUNCTION DIAGRAM	37
+圖 26 簡化的 ECO 功能圖 37
+FIGURE 27 SCREENSHOT OF THE SPECIFIC SETTING TO BE ENABLED	39
+圖 27 要啟用的特定設置的截圖 39
+FIGURE 28 SCREENSHOT OF USER ACCOUNT INTERFACE	40
+圖 28 使用者帳戶界面的截圖 40
+FIGURE 29 SCREENSHOT OF SECOND USER ACCOUNT INTERFACE	41
+圖 29 第二個使用者帳戶界面的截圄 41
+FIGURE 30 ODOO 3D PRINTER EQUIPMENT ITEM	42
+圖 30 ODOO 3D 打印設備項目 42
+FIGURE 31 OVERVIEW OF EQUIPMENT ITEMS	42
+圖 31 設備項目的概覽 42
+FIGURE 32 ODOO PROTOTYPING STATION ITEM REPRESENTATION 1	43
+圖 32 ODOO 原型製作站項目表示 1 43
+FIGURE 33 PROTOTYPING STATION ITEM REPRESENTATION 2	44
+圖 33 原型製作站項目表示 2 44
+FIGURE 34 OVERVIEW OF WORKCENTER ITEMS	44
+圖 34 工作中心項目的概覽 44
+FIGURE 35 SECTIONED DIAGRAM REGARDING PRODUCT DEVELOPMENT	45
+圖 35 產品開發的切割圖 45
+FIGURE 36 IMAGE OF THE PROTOTYPE PRODUCT ITEM	46
+圖 36 原型產品項目的渲染 46
+FIGURE 37 OVERVIEW OF PRODUCT CLASS ITEMS FOR PROTOTYPE	46
+圖 37 用於原型的產品類別項目的概覽 46
+FIGURE 38 BOM DIAGRAMS FOR PROTOTYPING	47
+圖 38 用於原型的 BOM 圖 47
+FIGURE 39 IMAGE OF THE PROTOTYPE PRODUCT BOM (PART-A)	47
+圖 39 原型產品 BOM 的圖片（部件 A） 47
+FIGURE 40 IMAGE OF OPERATION ITEM AS PRESENTED BY ODOO (BOM PART-A)	48
+圖 40 由 ODOO 表示的 BOM 部件 A 的操作項目圖 48
+FIGURE 41 OVERVIEW OF BOMS CREATED FOR PROTOTYPING	48
+圖 41 為原型製作創建的 BOM 圖 48
+FIGURE 42 ECO EXAMPLE	49
+圖 42 ECO 的示例 49
+FIGURE 43 OVERVIEW OF ATTACHED FILES TO ECO	50
+圖 43 與 ECO 相關聯的附加文件的概覽 50
+FIGURE 44 QUALITY CONTROL POINT ITEM FOR THE PROTOTYPE PRODUCTION	50
+圖 44 用於原型生產的品質控制點項目 50
+FIGURE 45 DEPICTION OF THE MANUFACTURING ORDER	51
+圖 45 製造訂單的圖示 51
+FIGURE 46 OVERVIEW OF THE RESULTED WORK ORDERS	52
+圖 46 結果工作訂單的概覽 52
+FIGURE 47 IMAGE OF ODOO FORUM QUESTION REGARDING ROUTES	53
+圖 47 關於路線的 ODOO 論壇問題的截圖 53
+FIGURE 48 OVERVIEW OF THE PRODUCTS AFTER MANUFACTURING	54
+圖 48 生產後產品的概覽 54
+FIGURE 49 DEPICTION OF THE VALIDATION OF THE ECO	54
+圖 49 ECO 驗證的描繪 54
+FIGURE 50 DEPICTION OF CHANGES PROVOKED BY THE ECO TO PRODUCT ITEM	55
+圖 50 ECO 對產品項目引起的變化的描繪 55
+FIGURE 51 SECTIONED DIAGRAM REGARDING PROCESS DEVELOPMENT	56
+圖 51 製程開發的切割圖 56
+FIGURE 52 RENDER OF HOW THE FINAL PRODUCT SHOULD LOOK LIKE	56
+   圖 52 最終產品的渲染 56 
+FIGURE 53 PRODUCT ITEM OF THE ALPHA CASE	57
+圖 53 ALPHA CASE 的產品項目 57
+FIGURE 54 DIAGRAM REGARDING PROCESS DEVELOPMENT FOR MOLD	57
+圖 54 關於模具製程開發的圖示 57
+FIGURE 55 ECO EXAMPLE OF UPDATE PROCEDURE OF BOM	59
+圖 55 BOM 更新程序的 ECO 示例 59
+FIGURE 56 OVERVIEW OF PRODUCT ITEMS AT THIS STAGE OF THE SIMULATION	60
+圖 56 模擬目前階段的產品項目概觀 60
+FIGURE 57 MAIN PATH OF DEVELOPMENT FROM IDEA TO PRODUCTION	61
+圖 57 從構想到生產的主要發展路徑 61
+FIGURE 58 SECTIONED DIAGRAM REGARDING PROCESS UPGRADE PROCEDURE	62
+圖 58 關於流程升級程序的切割圖 62
+FIGURE 59 SECTIONED DIAGRAM REGARDING PROCESS DEVELOPMENT	62
+圖 59 關於流程開發的切割圖 62
+FIGURE 60 RELEVANT PRODUCT ITEMS OVERVIEW	63
+圖 60 相關產品項目概觀 63
+FIGURE 61 EXAMPLE OF ECOS OF A PRODUCT ITEM	63
+圖 61 產品項目的 ECO 示例 63
+FIGURE 62 WORKCENTER OVERVIEW 1	64
+圖 62 工作中心概觀 1 64
+FIGURE 63 WORKCENTER OVERVIEW 2	64
+圖 63 工作中心概觀 2 64
+FIGURE 64 ECO APPLIED TO BOM	65
+圖 64 應用於 BOM 的 ECO 65
+FIGURE 65 TOTAL QUANTITY REGARDING MO	66
+圖 65 MO 的總數量 66
+FIGURE 66 REAL DURATION REGARDING WORK ORDERS	67
+圖 66 工作訂單的實際持續時間 67
+FIGURE 67 DURATION VARIATION REGARDING WORK ORDERS	68
+圖 67 工作訂單的持續時間變化 68
+FIGURE 68 OVERALL EQUIPMENT EFFECTIVENESS	68
+圖 68 整體設備效率 68
+FIGURE 69 DIAGRAM REPRESENTING ODOO SCOPE OF ERP	69
+圖 69 代表 ODOO ERP 範圍的圖示 69
+FIGURE 70 GUI OPTIONS OF DATA REPORTING	72
+圖 70 數據報告的 GUI 選項 72
+FIGURE 71 TOTAL QUANTITY REGARDING MO FROM PRODUCT ITEM	73
+圖 71 來自產品項目的 MO 的總數量 73
+FIGURE 72 UNIT FORECAST OVERVIEW	74
+圖 72 單位預測概觀 74
+FIGURE 73 COMPARISON TO THE LEFT THE ADAPTED DIAGRAM AS THEORIZED BY SAAKSVUORI, A. AND IMMONEN, A. (2008), TO THE RIGHT ODOO TAKE ON HOW SYSTEMS INTERACT	75
+
+   圖 73 左側是由 Saaksvuori, A. 和 Immonen, A. (2008) 理論化的調整圖，右側是 ODOO 對系統互動方式的  看法 75
+ 
+1.	CHAPTER章 INTRODUCTIO引言
+1.1.	Objective  1.1. 目標
+
+The thesis has the objective of finding out how far PLM+MES system can be implemented by using the readily available Odoo software by analyzing the different concepts and dynamics that would consist said integration and they apply a fictional scenario to determine if and which of those concepts are included within this packaged solution.
+論文的目標是通過分析不同的概念和動態，找出使用現有的Odoo軟件能實施PLM+MES系統到什麼程度，並且應用虛構情景來確定該集成中是否包含這些概念中的哪些。
+
+To contextualize, the Odoo software differs from other solutions in the market substantially both in implementation and business model. To summarize, the Odoo software was originated as an open-source ERP software as oppose to a PLM or MES software and as such its availability and modularity are reasonably expanded. It goes without saying that the counter point for this that its usability in the field of PLM or MES is uncertain hence the value of this work.
+為了提供背景，Odoo軟件在實施和商業模式方面與市場上的其他解決方案有很大不同。簡而言之，Odoo軟件最初是一款開源的ERP軟件，而不是PLM或MES軟件，因此其可用性和模塊化程度相對擴展。顯而易見的是，與此相對應的是，它在PLM或MES領域的可用性是不確定的，因此這項工作的價值就體現出來了。
+
+Specifically, from the perspective of small manufacturing business and startups, the idea of an all-around ERP that implements a PLM-MES system is extremely valuable. Although ERP systems are somewhat available, they rarely venture deep enough into manufacturing to expand into PLM or MES solutions. In addition, the other direction is also relevant since PLM solutions tend to not have the expandability of an ERP which usually means that any integration requires specialized ad-hoc work.
+具體來說，從小型製造業和初創企業的角度來看，實現一個全方位的ERP，並實施PLM-MES系統是非常有價值的。儘管ERP系統在一定程度上是可用的，但它們很少深入製造業，以擴展到PLM或MES解決方案。此外，另一個方向也很重要，因為PLM解決方案往往缺乏ERP的可擴展性，這通常意味著任何集成都需要專門的特定工作。
+
+Although modifying the software do not fall within the scope of this work, the fact that the software has an open-source community version means that adapting the software even to the most specific cases may prove to be easier and economical barriers for adopting lower, further emphasizing the possible utility of this software in the context of small business.
+雖然修改軟件不在本工作的範圍內，但軟件具有開源社區版本的事實意味著即使是對最特定的情況進行適應也可能更容易，經濟上的障礙對於接受率更低的採用者來說可能更低，進一步強調了在小企業環境中這款軟體的可能效用。
+
+Ultimately, the thesis will give theoretical and practical advices on how to further exploit this system. It will also lay the ground for future works on the Odoo software and checks on how the solution is performing by identifying specific key aspects of PLM-MES integration and implementation.
+最終，該論文將就如何進一步利用這個系統提供理論和實踐建議。它還為未來對Odoo軟件的工作奠定基礎，並通過識別PLM-MES集成和實施的具體關鍵方面來檢查該解決方案的性能。 
+1.2.	Structure   1.2. 結構
+
+This work could be a reference for an actual implementation of the described solution in small manufacturing enterprises and it can be treated as introductory material to PLM-MES and their implementation, as well as first principles and review of the current state of the Odoo software regarding it. To such end, this thesis presents the following structure:
+這份工作可以作為小型製造企業中所描述解決方案的實際實施的參考，並且可以被視為PLM-MES及其實施的入門材料，以及對Odoo軟件目前狀態的基本原則和評論。為此，本論文提出以下結構：
+
+	Chapter 1 - Introduction to this work and its objectives. Furthermore, it provide a succinct explanation of why this software solution requires this sort of analysis in the first place and how it was be structured.
+	第1章 - 介紹本工作及其目標。此外，它提供了為什麼這種軟件解決方案需要這種分析以及如何結構化的簡明解釋。
+
+	Chapter 2 – This chapter introduce the basic theoretical background to PLM, MES, ERP and Industry 4.0. These are presented in order to create the grounds to a meaningful contribution in this kind of analysis as well as providing meaningful context for its implementation in case the reader is a small business representative.
+
+	第2章 - 本章介紹PLM、MES、ERP和工業4.0的基本理論背景。這些被呈現出來，以便為這種分析做出有意義的貢獻，同時為其在小企業代表讀者的情況下提供有意義的上下文。
+
+	Chapter 3 – This chapter is all about the integration between PLM and MES systems as discussed by previous works and as was be analyzed in this work. This is useful to stablish the concepts and dynamics that are the subject when analyzing the Odoo software.
+
+	第3章 - 本章將討論先前研究中關於PLM和MES系統之間的集成，並將分析這項工作。這有助於確立在分析Odoo軟件時涉及的概念和動態。
+
+	Chapter 4 – Introduction to the fictional company and products chosen in the molds of Industry 4.0 to be used in the further analysis and evaluation of the Odoo software.
+
+	第4章 - 介紹了以工業4.0模式為基礎的虛構公司和產品，這些將在進一步分析和評估Odoo軟件中使用。
+
+	Chapter 5 – The introduction to the Odoo software as well as a more in-depth explanation of its use and functionalities. The description of the experimentation of the Odoo software taking in consideration all the previous chapters
+
+	第5章 - 介紹Odoo軟件以及更深入解釋其使用和功能。描述了對Odoo軟件的實驗，考慮了所有前面的章節。
+
+	Chapter 7 - Conclusions The last chapter describes the takeaways of the work: how a medium enterprise can improve its processes through an informed use of a PLM+MES system implemented using the Odoo software.
+
+	第7章 - 結論。最後一章描述了工作的收穫：中型企業如何通過明智地使用Odoo軟件實施PLM+MES系統來改善其流程。
+
+ 
+2.	CHAPTER THEORETICAL BACKGROUND
+章 理論背景
+This chapter is a brief introduction to the different systems that deal with data production collection and processing around the concept of enhancing all aspects of production that are favored by the academic community as well as the current and future state of industry for which these systems should prove to be indispensable.
+本章是對處理數據生產收集和處理的不同系統進行簡要介紹，這些系統圍繞著增強所有生產方面的概念，這些概念受到學術界以及當前和未來工業狀態的青睞，這些系統應該被證明是不可或缺的。
+
+It is important to notice from this part that these are not completely separate information systems. They start from different perspectives and they try to solve different problems but because of broad definitions they unavoidably expand into each other. That represents a problem on its own since from the available literature it becomes difficult to pinpoint where the boundary of a system ends and another one starts.
+值得注意的是，這些系統並不是完全獨立的信息系統。它們從不同的角度出發，嘗試解決不同的問題，但由於廣泛的定義，它們不可避免地相互擴展。這本身就是一個問題，因為從現有文獻中很難準確指出一個系統的邊界在哪裡，另一個系統開始。
+
+The Odoo management software (that is a topic of this work) considers PLM mainly as a tool for tracking change and improvements, while other key characteristics of PLM, like the use of digital items (later detailed at section 2.1), is a base characteristic of the material requirements planning which is a tool utility that also dabbles into MES.
+Odoo管理軟件（本文的主題之一）主要將PLM視為跟踪變更和改進的工具，而PLM的其他關鍵特性，如使用數字項目（稍後在第2.1節詳細介紹），則是物料需求計劃的基本特徵，而後者也涉及MES。
+
+
+2.1.	Product lifecycle management   2.1. 產品生命周期管理
+
+Any information produced by an individual or team is done by an empirical creative process. A task requires either previous knowledge/experience or it will be inevitably plagued by mistakes and corrections, which in turn generates said experience in exchange of time and resources. That experience is, traditionally, embedded in the human resource (employee) that produced the information in the first place.
+
+任何個人或團隊所產生的信息都是通過經驗主義的創造過程完成的。一項任務要求要么具有先前的知識/經驗，否則將不可避免地受到錯誤和更正的困擾，這反過來又消耗了時間和資源來獲取這種經驗。傳統上，這種經驗嵌入在首次產生信息的人力資源（員工）中。
+
+Product Life-Cycle Management (PLM) is an organizational process that aims to control the flow of information regarding all aspects of a product throughout its life-cycle. As one can imagine, this definition, and its broad scope, does not make understanding PLM any easier. The thing to focus on, for all purposes, is that PLM true value is in what concerns change.
+
+產品生命周期管理（PLM）是一個組織過程，旨在控制產品在其整個生命周期中的所有方面的信息流。正如人們可以想像的那樣，這個定義及其廣泛的範圍並不會使理解PLM變得更容易。對於所有目的來說，要關注的是PLM在變化方面的真正價值
