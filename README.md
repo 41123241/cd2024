@@ -1,3 +1,8 @@
+靜態網站: https://41123241.github.io/cd2024/content/index.html
+
+
+
+
 # cmsimde_site
 
 利用 init_replit 指令安裝所需 Python 模組
