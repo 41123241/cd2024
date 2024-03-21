@@ -1,4 +1,5 @@
 靜態網站: https://41123241.github.io/cd2024/content/index.html
+網誌: https://41123241.github.io/cd2024/blog
 
 
 
